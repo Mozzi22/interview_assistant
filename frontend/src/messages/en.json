@@ -1,0 +1,63 @@
+{
+  "Metadata": {
+    "title": "Nataliia | Interview Assistant",
+    "description": "Platform for Frontend interview preparation"
+  },
+  "Main": {
+    "interviewAssistant": "Interview Assistant",
+    "interviewAssistantDesc": "Supercharge your interview preparation with AI. Practice coding, system design, and behavioral questions with real-time feedback.",
+    "startPracticing": "Start Practicing",
+    "learnMore": "Learn More",
+    "technicalQuestions": "Technical Questions",
+    "codingTasks": "Coding Tasks",
+    "archCases": "Arch. Cases",
+    "scenarios": "Scenarios"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "login": "Login",
+    "registration": "Registration",
+    "logout": "Logout"
+  },
+  "Auth": {
+    "welcomeBack": "Welcome Back",
+    "signInDesc": "Sign in to your account to continue",
+    "forgotPassword": "Forgot Password?",
+    "rememberPassword": "Remember your password?",
+    "signIn": "Sign In",
+    "signInProgress": "Signing in...",
+    "doNotHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up",
+    "signUpDesc": "Sign up to get started",
+    "confirmPassword": "Confirm Password",
+    "createAccount": "Create Account",
+    "createAccountProgress": "Creating account...",
+    "haveAccount": "Already have an account?",
+    "resetPassword": "Reset Password",
+    "resetPasswordProgress": "Resetting...",
+    "newPassword": "New Password",
+    "resetCode": "Reset Code",
+    "sendResetCode": "Send Reset Code",
+    "sendResetCodeProgress": "Sending...",
+    "receiveEmail": "Enter your email to receive a code",
+    "confirmReceiveEmail": "Enter the code and your new password"
+  },
+  "About": {
+    "aboutMe": "About Me"
+  },
+  "Validation": {
+    "email": "Email",
+    "password": "Password",
+    "code": "Code",
+    "passwordMustMatch": "Passwords must match",
+    "isRequired": "{field} is required",
+    "mustBeAtLeast": "{field} must be at least {count} characters",
+    "isInvalidEmail": "Invalid email address"
+  },
+  "Footer": {
+    "copyright": "© 2026 Crafted by Nataliia",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}

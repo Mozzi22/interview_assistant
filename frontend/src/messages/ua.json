@@ -1,0 +1,63 @@
+{
+  "Metadata": {
+    "title": "Наталія | Інтерв’ю Асистент",
+    "description": "Питання для співбесід з Frontend"
+  },
+  "Main": {
+    "interviewAssistant": "Інтерв’ю Асистент",
+    "interviewAssistantDesc": "Покращте свою підготовку до співбесіди за допомогою штучного інтелекту. Практикуйте кодування, проектування систем та поведінкові питання зі зворотним зв'язком у режимі реального часу.",
+    "startPracticing": "Почніть практикуватися",
+    "learnMore": "Дізнайтеся більше",
+    "technicalQuestions": "Технічні питання",
+    "codingTasks": "Кодинг тасків",
+    "archCases": "Арх. кейси",
+    "scenarios": "Сценарії"
+  },
+  "Navigation": {
+    "home": "Головна",
+    "about": "Про мене",
+    "login": "Увійти",
+    "registration": "Реєстрація",
+    "logout": "Вийти"
+  },
+  "Auth": {
+    "welcomeBack": "З поверненням",
+    "signInDesc": "Увійдіть у свій обліковий запис, щоб продовжити",
+    "forgotPassword": "Забули пароль?",
+    "rememberPassword": "Пам’ятаєте пароль?",
+    "signIn": "Увійти",
+    "signInProgress": "Вхід...",
+    "doNotHaveAccount": "Не маєте облікового запису?",
+    "signUp": "Зареєструватися",
+    "signUpDesc": "Зареєструйтеся, щоб почати",
+    "confirmPassword": "Підтвердіть пароль",
+    "createAccount": "Створити обліковий запис",
+    "createAccountProgress": "Створення облікового запису...",
+    "haveAccount": "Вже маєте обліковий запис?",
+    "resetPassword": "Скинути пароль",
+    "resetPasswordProgress": "Скидання...",
+    "newPassword": "Новий пароль",
+    "resetCode": "Код скидання",
+    "sendResetCode": "Надіслати код",
+    "sendResetCodeProgress": "Надсилання...",
+    "receiveEmail": "Введіть email, щоб отримати код",
+    "confirmReceiveEmail": "Введіть код і новий пароль"
+  },
+  "About": {
+    "aboutMe": "Про мене"
+  },
+  "Validation": {
+    "email": "Email",
+    "password": "Пароль",
+    "code": "Код",
+    "passwordMustMatch": "Паролі повинні співпадати",
+    "isRequired": "{field} є обов’язковим",
+    "mustBeAtLeast": "{field} має містити щонайменше {count} символів",
+    "isInvalidEmail": "Невірна електронна адреса"
+  },
+  "Footer": {
+    "copyright": "© 2026 Crafted by Nataliia",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}
