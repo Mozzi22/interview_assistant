@@ -15,6 +15,7 @@
   },
   "Navigation": {
     "home": "Головна",
+    "questions": "Питання",
     "about": "Про мене",
     "login": "Увійти",
     "registration": "Реєстрація",
@@ -45,6 +46,25 @@
   },
   "About": {
     "aboutMe": "Про мене"
+  },
+  "Questions": {
+    "title": "Питання для співбесіди",
+    "subtitle": "Оберіть категорію для перегляду питань",
+    "selectCategory": "Оберіть категорію, щоб побачити питання",
+    "noQuestions": "У цій категорії ще немає питань",
+    "loading": "Завантаження питань...",
+    "accessDenied": "Доступ заборонено",
+    "accessDeniedDesc": "Будь ласка, увійдіть, щоб отримати доступ до питань.",
+    "signIn": "Увійти",
+    "difficulty": "Складність",
+    "easy": "Легко",
+    "medium": "Середньо",
+    "hard": "Важко"
+  },
+  "Chat": {
+    "executingAction": "Виконання дії...",
+    "AIAssistant": "ШІ Асистент",
+    "AIAssistantPlaceholder": "Запитуйте..."
   },
   "Validation": {
     "email": "Email",

@@ -9,15 +9,18 @@ import MobileNavigation from '@/components/layout/Navigation/components/MobileNa
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher'
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher'
 import { Link } from '@/i18n/routing'
+import { selectIsAuthenticated } from '@/store/features/userSlice'
+import { useAppSelector } from '@/store/hooks'
 
-import AuthModal, { type AuthView } from '../../auth/AuthModal'
+import AuthModal from '../../auth/AuthModal'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const [authModal, setAuthModal] = useState<AuthView | null>(null)
 
   const handleCloseMenu = () => setIsOpen(false)
   const handleToggleMenu = () => setIsOpen((prev) => !prev)
+
+  const isAuthenticated = useAppSelector(selectIsAuthenticated)
 
   return (
     <>
@@ -37,32 +40,25 @@ const Navigation = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <DesktopNavigation setAuthModal={setAuthModal} />
+        <DesktopNavigation />
 
         {/* Mobile Burger Button - Left aligned */}
         <div className="md:hidden flex items-center space-x-3 pointer-events-auto">
           <ThemeSwitcher />
           <LanguageSwitcher />
-          <button
-            onClick={handleToggleMenu}
-            className="pointer-events-auto p-2 bg-sidebar/80 backdrop-blur-md rounded-xl border border-border shadow-sm text-text-muted active:scale-95 transition-all"
-          >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          {isAuthenticated && (
+            <button
+              onClick={handleToggleMenu}
+              className="pointer-events-auto p-2 bg-sidebar/80 backdrop-blur-md rounded-xl border border-border shadow-sm text-text-muted active:scale-95 transition-all"
+            >
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          )}
         </div>
       </div>
 
-      <MobileNavigation
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        setAuthModal={setAuthModal}
-      />
-      <AuthModal
-        isOpen={authModal !== null}
-        onClose={() => setAuthModal(null)}
-        initialView={authModal || 'login'}
-        setAuthModal={setAuthModal}
-      />
+      <MobileNavigation isOpen={isOpen} setIsOpen={setIsOpen} />
+      <AuthModal />
     </>
   )
 }

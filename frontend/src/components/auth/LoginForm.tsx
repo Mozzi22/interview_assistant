@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { LoginFormData, loginValidation } from '@/components/auth/validation'
+import PasswordInput from '@/components/ui/PasswordInput'
 import { useSignInMutation } from '@/store/services/signInApi'
 
 import type { AuthView } from './AuthModal'
@@ -80,12 +81,7 @@ const LoginForm = ({ onSwitchView, onSuccess }: Props) => {
           <label className="block text-sm font-medium text-foreground mb-1">
             {tValidation('password')}
           </label>
-          <input
-            {...register('password')}
-            type="password"
-            className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
-            placeholder="••••••••"
-          />
+          <PasswordInput registration={register('password')} />
           {errors.password && (
             <p className="text-error text-xs mt-1">{errors.password.message}</p>
           )}

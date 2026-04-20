@@ -26,7 +26,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     const user = await prisma.user.create({
       data: {
         email,
-        passwordHash
+        password_hash: passwordHash
       }
     })
 
@@ -53,7 +53,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       return
     }
 
-    const isValidPassword = await bcrypt.compare(password, user.passwordHash)
+    const isValidPassword = await bcrypt.compare(password, user.password_hash)
     if (!isValidPassword) {
       res.status(401).json({ error: 'Invalid credentials' })
       return
@@ -83,7 +83,7 @@ export const requestPasswordReset = async (req: Request, res: Response): Promise
 
     await prisma.user.update({
       where: { id: user.id },
-      data: { resetCode, resetCodeExpires }
+      data: { reset_code: resetCode, reset_code_expires: resetCodeExpires }
     })
 
     // Send email with reset code using Resend, if configured
@@ -95,10 +95,10 @@ export const requestPasswordReset = async (req: Request, res: Response): Promise
         html: `<p>Your password reset code is: <strong>${resetCode}</strong></p><p>It covers within 15 minutes.</p>`
       })
     } else {
-        console.warn('RESEND_API_KEY is not configured! Simulated code:', resetCode);
+      console.warn('RESEND_API_KEY is not configured! Simulated code:', resetCode)
     }
 
-    res.json({  data: { message: 'If an account exists, a reset code was sent.' } })
+    res.json({ data: { message: 'If an account exists, a reset code was sent.' } })
   } catch (error) {
     console.error('Reset Request Error:', error)
     res.status(500).json({ error: 'Internal server error' })
@@ -108,7 +108,7 @@ export const requestPasswordReset = async (req: Request, res: Response): Promise
 export const confirmPasswordReset = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, code, password } = req.body
-    
+
     if (!email) {
       res.status(400).json({ error: 'email Missing required fields' })
       return
@@ -123,20 +123,25 @@ export const confirmPasswordReset = async (req: Request, res: Response): Promise
     }
 
     const user = await prisma.user.findUnique({ where: { email } })
-    
-    if (!user || user.resetCode !== code || !user.resetCodeExpires || user.resetCodeExpires < new Date()) {
+
+    if (
+      !user ||
+      user.reset_code !== code ||
+      !user.reset_code_expires ||
+      user.reset_code_expires < new Date()
+    ) {
       res.status(400).json({ error: 'Invalid or expired reset code' })
       return
     }
 
     const passwordHash = await bcrypt.hash(password, 10)
-    
+
     await prisma.user.update({
       where: { id: user.id },
       data: {
-        passwordHash,
-        resetCode: null,
-        resetCodeExpires: null
+        password_hash: passwordHash,
+        reset_code: null,
+        reset_code_expires: null
       }
     })
 

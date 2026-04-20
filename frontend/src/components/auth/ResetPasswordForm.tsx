@@ -9,6 +9,7 @@ import {
   ResetPasswordFormData,
   resetPasswordValidation
 } from '@/components/auth/validation'
+import PasswordInput from '@/components/ui/PasswordInput'
 import {
   useConfirmResetPasswordMutation,
   useResetPasswordMutation
@@ -144,12 +145,7 @@ const ResetPasswordForm = ({ onSwitchView }: Props) => {
             <label className="block text-sm font-medium text-foreground mb-1">
               {t('newPassword')}
             </label>
-            <input
-              {...confForm.register('password')}
-              type="password"
-              className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:ring-2 focus:ring-primary outline-none"
-              placeholder="••••••••"
-            />
+            <PasswordInput registration={confForm.register('password')} />
             {confForm.formState.errors.password && (
               <p className="text-error text-xs mt-1">
                 {confForm.formState.errors.password.message}
