@@ -9,6 +9,7 @@ import { ReactNode } from 'react'
 
 import Footer from '@/components/layout/Footer'
 import Navigation from '@/components/layout/Navigation'
+import ChatBot from '@/components/ui/ChatBot'
 import ThemeProvider from '@/components/ui/ThemeProvider'
 import { routing } from '@/i18n/routing'
 import { ReduxProvider } from '@/store/provider'
@@ -59,6 +60,7 @@ const RootLayout = async ({ children, params }: Props) => {
               <main className="flex-grow pt-24 pb-12 md:px-12 lg:px-24">
                 {children}
               </main>
+              <ChatBot />
               <Footer />
             </ReduxProvider>
           </ThemeProvider>

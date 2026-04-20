@@ -3,26 +3,31 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
 
-import type { AuthView } from '@/components/auth/AuthModal'
-import { navItems } from '@/components/layout/Navigation/constants'
+import {
+  protectedNavItems,
+  publicNavItems
+} from '@/components/layout/Navigation/constants'
 import { Link, usePathname } from '@/i18n/routing'
+import { setModal } from '@/store/features/uiSlice'
 import { logout, selectIsAuthenticated } from '@/store/features/userSlice'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 
 type Props = {
   isOpen: boolean
   setIsOpen: Dispatch<SetStateAction<boolean>>
-  setAuthModal: Dispatch<SetStateAction<AuthView | null>>
 }
 
-const MobileNavigation = ({ isOpen, setIsOpen, setAuthModal }: Props) => {
+const MobileNavigation = ({ isOpen, setIsOpen }: Props) => {
   const pathname = usePathname()
   const t = useTranslations('Navigation')
   const dispatch = useAppDispatch()
 
   const isAuthenticated = useAppSelector(selectIsAuthenticated)
-
   const handleCloseMenu = () => setIsOpen(false)
+
+  const navItems = isAuthenticated
+    ? [...publicNavItems, ...protectedNavItems]
+    : publicNavItems
 
   return (
     <AnimatePresence>
@@ -71,7 +76,7 @@ const MobileNavigation = ({ isOpen, setIsOpen, setAuthModal }: Props) => {
                   <button
                     onClick={() => {
                       handleCloseMenu()
-                      setAuthModal('login')
+                      dispatch(setModal('login'))
                     }}
                     className="text-3xl font-extrabold text-left transition-colors text-text-muted hover:text-primary"
                   >
@@ -80,7 +85,7 @@ const MobileNavigation = ({ isOpen, setIsOpen, setAuthModal }: Props) => {
                   <button
                     onClick={() => {
                       handleCloseMenu()
-                      setAuthModal('register')
+                      dispatch(setModal('register'))
                     }}
                     className="text-3xl font-extrabold text-left transition-colors text-text-muted hover:text-primary"
                   >

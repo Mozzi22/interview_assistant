@@ -1,3 +1,4 @@
 export const enum PAGES {
-  ENTRY = '/*'
+  HOME = '/',
+  QUESTIONS = '/questions'
 }

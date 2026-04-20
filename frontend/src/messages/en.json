@@ -15,6 +15,7 @@
   },
   "Navigation": {
     "home": "Home",
+    "questions": "Questions",
     "about": "About",
     "login": "Login",
     "registration": "Registration",
@@ -45,6 +46,25 @@
   },
   "About": {
     "aboutMe": "About Me"
+  },
+  "Questions": {
+    "title": "Interview Questions",
+    "subtitle": "Choose a category to explore questions",
+    "selectCategory": "Select a category to see questions",
+    "noQuestions": "No questions in this category yet",
+    "loading": "Loading questions...",
+    "accessDenied": "Access Denied",
+    "accessDeniedDesc": "Please sign in to access interview questions.",
+    "signIn": "Sign In",
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "Chat": {
+    "executingAction": "Executing action...",
+    "AIAssistant": "AI Assistant",
+    "AIAssistantPlaceholder": "Ask me anything..."
   },
   "Validation": {
     "email": "Email",

@@ -1,3 +1,5 @@
+import { routing } from '@/i18n/routing'
+
 type TServerStatus = 'success' | 'failed'
 
 export type TServerResponse<T> = {
@@ -12,3 +14,5 @@ export type TServerResponsePagination<T> = {
   previous: string | null
   results: T
 }
+
+export type TLocale = (typeof routing.locales)[number]
