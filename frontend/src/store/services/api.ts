@@ -5,13 +5,21 @@ import {
   fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
 
+import { RootState } from '@/store'
 import { apiBaseUrl } from '@/utils/makeUrl'
 
 export const baseQuery = fetchBaseQuery({
   baseUrl: apiBaseUrl,
-  headers: {
-    'Accept-Encoding': 'gzip, deflate, br, brotli',
-    'content-type': 'application/json'
+  prepareHeaders: (headers, { getState }) => {
+    headers.set('Accept-Encoding', 'gzip, deflate, br, brotli')
+    headers.set('content-type', 'application/json')
+
+    const token = (getState() as RootState).user.token
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`)
+    }
+
+    return headers
   }
 })
 

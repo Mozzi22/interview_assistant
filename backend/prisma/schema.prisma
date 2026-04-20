@@ -8,11 +8,41 @@ datasource db {
 }
 
 model User {
-  id               String    @id @default(uuid())
-  email            String    @unique
-  passwordHash     String
-  resetCode        String?
-  resetCodeExpires DateTime?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  id                 String    @id @default(uuid())
+  email              String    @unique
+  password_hash      String
+  reset_code         String?
+  reset_code_expires DateTime?
+  created_at         DateTime  @default(now())
+  updated_at         DateTime  @updatedAt
+}
+
+enum Difficulty {
+  easy
+  medium
+  hard
+}
+
+model Category {
+  id         String     @id @default(uuid())
+  slug       String     @unique
+  name_en    String
+  name_ua    String
+  icon       String?
+  order      Int        @default(0)
+  questions  Question[]
+  created_at DateTime   @default(now())
+}
+
+model Question {
+  id          String     @id @default(uuid())
+  category_id String
+  category    Category   @relation(fields: [category_id], references: [id])
+  question_en String
+  question_ua String
+  answer_en   String?
+  answer_ua   String?
+  difficulty  Difficulty @default(medium)
+  order       Int        @default(0)
+  created_at  DateTime   @default(now())
 }
