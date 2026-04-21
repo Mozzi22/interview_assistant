@@ -1,6 +1,13 @@
-import Link from 'next/link'
+'use client'
+
 import { useLocale } from 'next-intl'
 import { useTranslations } from 'next-intl'
+
+import { useRouter } from '@/i18n/routing'
+import { setModal } from '@/store/features/uiSlice'
+import { selectIsAuthenticated } from '@/store/features/userSlice'
+import { useAppDispatch, useAppSelector } from '@/store/hooks'
+import { PAGES } from '@/utils/constants/pages-routes'
 
 const projectDescriptions = [
   { title: 'technicalQuestions', desc: '5,200+' },
@@ -11,6 +18,10 @@ const projectDescriptions = [
 const Home = () => {
   const t = useTranslations('Main')
   const locale = useLocale()
+  const router = useRouter()
+  const dispatch = useAppDispatch()
+
+  const isAuthenticated = useAppSelector(selectIsAuthenticated)
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[70vh] text-center space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
@@ -24,12 +35,16 @@ const Home = () => {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-8">
-        <Link
-          href="/practice"
-          className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+        <button
+          onClick={() =>
+            isAuthenticated
+              ? router.push(PAGES.QUESTIONS)
+              : dispatch(setModal('login'))
+          }
+          className="px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer"
         >
           {t('startPracticing')}
-        </Link>
+        </button>
         <a
           href={`https://nataliia-fe-portfolio.vercel.app/${locale}/about`}
           target="_blank"
