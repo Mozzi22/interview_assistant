@@ -26,7 +26,7 @@ const Navigation = () => {
     <>
       <div className="fixed top-0 left-0 right-0 w-full p-4 md:p-6 z-50 flex items-center justify-between pointer-events-none">
         <Link
-          href="/frontend/public"
+          href="/"
           className="pointer-events-auto"
           onClick={handleCloseMenu}
         >
