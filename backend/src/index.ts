@@ -20,9 +20,9 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running' })
 })
 
-import authRoutes from './routes/auth.routes.ts'
-import questionsRoutes from './routes/questions.routes.ts'
-import aiRoutes from './routes/ai.routes.ts'
+import authRoutes from './routes/auth.routes.js'
+import questionsRoutes from './routes/questions.routes.js'
+import aiRoutes from './routes/ai.routes.js'
 
 app.use('/api/auth', authRoutes)
 app.use('/api/questions', questionsRoutes)
