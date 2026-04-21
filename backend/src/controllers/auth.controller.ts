@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import { PrismaClient } from '@prisma/client'
-import { generateToken } from '../utils/jwt.ts'
+import { generateToken } from '../utils/jwt.js'
 import { Resend } from 'resend'
 
 const prisma = new PrismaClient()
