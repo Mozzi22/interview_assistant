@@ -26,7 +26,7 @@ export const authenticate = (
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const decoded = jwt.verify(token, secret) as any
-    req.user = { id: decoded.userId }
+    req.user = { id: decoded.id }
     next()
   } catch (error) {
     res.status(401).json({ error: 'Unauthorized: Invalid token' })
